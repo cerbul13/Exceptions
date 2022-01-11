@@ -54,8 +54,26 @@ namespace Exceptions
         }
         public Dog(string name, int age)
         {
-            this.Name = name;
-            this.Age = age;
+            try
+            {
+                this.Name = name;
+            }
+            catch(InvalidNameLengthException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            try
+            {
+                this.Age = age;
+            }
+            catch(NegativeAgeException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch(AgeTooBigException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }
